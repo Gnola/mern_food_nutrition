@@ -1,0 +1,25 @@
+{
+  "name": "food_nutrition",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gnola/Food_Nutrition.git"
+  },
+  "author": "G Nola",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gnola/Food_Nutrition/issues"
+  },
+  "homepage": "https://github.com/Gnola/Food_Nutrition#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.1.0",
+    "express": "^4.17.1"
+  }
+}
