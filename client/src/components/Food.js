@@ -19,17 +19,16 @@ class Food extends Component {
   }
 
   render() {
-    // console.log(this.state);
     return (
       <div>
         <ul>
           <li>{this.state.name}</li>
           <ul>
             <li>Id: {this.state.id}</li>
-            <li>Protein: {this.state.protein}gs</li>
-            <li>Fats: {this.state.fats}gs</li>
-            <li>Carbs: {this.state.carbs}gs</li>
-            <li>Sugar: {this.state.sugar}gs</li>
+            {(this.props.proteinSearch > 0) ? <li><strong>Protein: {this.state.protein}gs</strong></li> : <li>Protein: {this.state.protein}gs</li>}
+            {(this.props.fatSearch > 0) ? <li><strong>Fats: {this.state.fats}gs</strong></li> : <li>Fats: {this.state.fats}gs</li>}
+            {(this.props.carbSearch > 0) ? <li><strong>Carbs: {this.state.carbs}gs</strong></li> : <li>Carbs: {this.state.carbs}gs</li>}
+            {(this.props.sugarSearch > 0) ? <li><strong>Sugar: {this.state.sugar}gs</strong></li> : <li>Sugar: {this.state.sugar}gs</li>}
           </ul>
         </ul>
       </div>
@@ -38,10 +37,3 @@ class Food extends Component {
 }
 
 export default Food;
-// <ul>
-//   {this.props.foods.map((food, id) => (
-//     <li key={id}>{food.name}: {food.nutrients.map((nutrients) => (
-//         <ul><li>{nutrients.nutrient}: {nutrients.value}{nutrients.unit}</li></ul>))}
-//     </li>
-//   ))}
-// </ul>
