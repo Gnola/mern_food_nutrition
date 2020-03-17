@@ -6,23 +6,24 @@ class Food extends Component {
     super(props)
     this.state ={
       name:this.props.foods.name,
-      protein:this.props.foods.nutrients[1].value,
-      fats:this.props.foods.nutrients[2].value,
-      carbs:this.props.foods.nutrients[3].value,
-      sugar:(this.props.foods.nutrients[4].value === "--") ? 0 : this.props.foods.nutrients[4].value
+      protein:(this.props.foods.nutrients[1].value === "--") ? 0.00 : this.props.foods.nutrients[1].value,
+      fats:(this.props.foods.nutrients[2].value === "--" || 0) ? 0.00 : this.props.foods.nutrients[2].value,
+      carbs:(this.props.foods.nutrients[3].value === "--") ? 0.00 : this.props.foods.nutrients[3].value,
+      sugar:(this.props.foods.nutrients[4].value === "--") ? 0.00 : this.props.foods.nutrients[4].value
     }
   }
 
   render() {
+    // console.log(this.state);
     return (
       <div>
         <ul>
           <li>{this.state.name}</li>
           <ul>
-            <li>Protein: <strong>{this.state.protein}</strong>gs</li>
-            <li>Fats: <strong>{this.state.fats}</strong>gs</li>
-            <li>Carbs: <strong>{this.state.carbs}</strong>gs</li>
-            <li>Sugar: <strong>{this.state.sugar}</strong>gs</li>
+            <li>Protein: {this.state.protein}gs</li>
+            <li>Fats: {this.state.fats}gs</li>
+            <li>Carbs: {this.state.carbs}gs</li>
+            <li>Sugar: {this.state.sugar}gs</li>
           </ul>
         </ul>
       </div>

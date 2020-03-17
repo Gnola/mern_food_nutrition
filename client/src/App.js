@@ -9,6 +9,10 @@ class App extends Component {
     super(props);
     this.state = {
       foods: [],
+      test: .5,
+      test2: .5,
+      test3: .5,
+      test4: .5,
       // name:'',
       // protein:'',
       // carbs:'',
@@ -31,7 +35,16 @@ class App extends Component {
         // carbs:res[0].report.foods.map((foods) => (foods.nutrients[3].value)),
         // sugar:res[0].report.foods.map((foods) => (foods.nutrients[4].value)),
       }, () => {
-        console.log(this.state);
+        // console.log(this.state.foods);
+        let count = 0
+        for (var i = 0; i < this.state.foods.length; i++) {
+          if (this.state.foods[i].nutrients[1].value >= this.state.test && this.state.foods[i].nutrients[2].value >= this.state.test2 && this.state.foods[i].nutrients[3].value >= this.state.test3 && this.state.foods[i].nutrients[4].value >= this.state.test4) {
+            console.log(this.state.foods[i]);
+            count++
+          }
+        }
+        console.log(count);
+        // console.log(this.state.find(food => food.name == 'Alcohol'));
       })
     })
     .catch(err => console.log(err))
