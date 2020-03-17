@@ -7,10 +7,14 @@ class Food extends Component {
     this.state ={
       id:this.props.id,
       name:this.props.foods.name,
-      protein:(this.props.foods.nutrients[1].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[1].value,
-      fats:(this.props.foods.nutrients[2].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[2].value,
-      carbs:(this.props.foods.nutrients[3].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[3].value,
-      sugar:(this.props.foods.nutrients[4].value === "--" || 0.00) ? '0.00' : this.props.foods.nutrients[4].value
+      protein:this.props.foods.nutrients[1].value,
+      fats:this.props.foods.nutrients[2].value,
+      carbs:this.props.foods.nutrients[3].value,
+      sugar:this.props.foods.nutrients[4].value
+      // protein:(this.props.foods.nutrients[1].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[1].value,
+      // fats:(this.props.foods.nutrients[2].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[2].value,
+      // carbs:(this.props.foods.nutrients[3].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[3].value,
+      // sugar:(this.props.foods.nutrients[4].value === "--" || 0.00) ? '0.00' : this.props.foods.nutrients[4].value
     }
   }
 
