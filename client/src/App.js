@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import Food from './components/Food.js';
-// import SearchedFoods from './components/SearchedFoods.js';
 import './App.css';
-
-// let baseURL = 'http://localhost:5000'
 
 class App extends Component {
   constructor(props){
@@ -19,27 +16,27 @@ class App extends Component {
     }
   }
 
-  // ON LOAD
+  // ON LOAD //
   componentDidMount(){
     fetch(`/foods`)
-    .then(res => res.json()) // format response to json
+    .then(res => res.json())
     .then((res) => {
       this.setState({
-        foods:res[0].report.foods, // set state
+        foods:res[0].report.foods,
       },
-      () => { // change all --s to 0s
+      () => {
         for (var i = 0; i < this.state.foods.length; i++) {
-          if (this.state.foods[i].nutrients[1].value === '--') {
-            this.state.foods[i].nutrients[1].value = 0
+          if (this.state.foods[i].nutrients[1].value === '--' || 0.00) {
+            this.state.foods[i].nutrients[1].value = '0.00'
           }
-          if (this.state.foods[i].nutrients[2].value === '--') {
-            this.state.foods[i].nutrients[2].value = 0
+          if (this.state.foods[i].nutrients[2].value === '--' || 0.00) {
+            this.state.foods[i].nutrients[2].value = '0.00'
           }
-          if (this.state.foods[i].nutrients[3].value === '--') {
-            this.state.foods[i].nutrients[3].value = 0
+          if (this.state.foods[i].nutrients[3].value === '--' || 0.00) {
+            this.state.foods[i].nutrients[3].value = '0.00'
           }
-          if (this.state.foods[i].nutrients[4].value === '--') {
-            this.state.foods[i].nutrients[4].value = 0
+          if (this.state.foods[i].nutrients[4].value === '--' || 0.00) {
+            this.state.foods[i].nutrients[4].value = '0.00'
           }
         }
         console.log(this.state);
@@ -48,28 +45,33 @@ class App extends Component {
     .catch(err => console.log(err))
   }
 
+  // ON CHANGE //
   handleChange = (event) => {
     this.setState({
       [event.target.id] : parseInt(event.target.value) || 0
     })
   }
 
+  // ON SUBMIT //
   handleSubmit = (event) => {
     event.preventDefault()
     this.search()
   }
 
-  // SEARCH
+  // SEARCH //
   search = () => {
+    // clear search arrays
     this.setState({
-      searched: [], // clear search array
+      searched: [],
       searchedFoods: []
-    }) // loop through foods and find matches
+    })
+    // loop through foods and find matches
     for (var i = 0; i < this.state.foods.length; i++) {
       if (this.state.foods[i].nutrients[1].value >= this.state.proteinSearch && this.state.foods[i].nutrients[2].value >= this.state.fatSearch && this.state.foods[i].nutrients[3].value >= this.state.carbSearch && this.state.foods[i].nutrients[4].value >= this.state.sugarSearch) {
         this.state.searched.push(this.state.foods[i])
       }
     }
+    // alert if no results are found
     if (this.state.searched.length === 0) {
       alert('Sorry no results matched your search. Please try again')
       this.setState({
@@ -79,13 +81,14 @@ class App extends Component {
         sugarSearch: 0,
       })
     }
+    // set state of searchedFoods to what was found in for loop
     this.setState({
-      searchedFoods: this.state.searched // set state of searchedFoods to what was found in for loop
+      searchedFoods: this.state.searched
     })
     console.log(this.state);
   }
 
-  // RESET - recall API to clear search results?
+  // RESET //
   reset = () => {
     // fetch(`/foods`)
     // .then(res => res.json())
@@ -126,35 +129,45 @@ class App extends Component {
     console.log(this.state);
   }
 
+
+
   render() {
     return (
       <div>
-        <div className='search-form'>
-          <form onSubmit={this.handleSubmit}>
-            Protein:<input id='proteinSearch' value={this.state.proteinSearch} onChange={this.handleChange} /> <br/>
-            Fats:<input id='fatSearch' value={this.state.fatSearch} onChange={this.handleChange} /> <br/>
-            Carbs:<input id='carbSearch' value={this.state.carbSearch} onChange={this.handleChange} /> <br/>
-            Sugar:<input id='sugarSearch' value={this.state.sugarSearch} onChange={this.handleChange} /> <br/>
-            <button value='submit'>Search</button>
-          </form>
-          <button onClick={() => {this.reset()}}>Reset</button>
+        <div id='header'>
+          <h1>thryve</h1>
         </div>
+        <div id='search-form'>
+          <h1>Search</h1>
+          <p id='search-text'>Search for foods with a combination of the following nutrients by amounts (in grams)</p>
+          <form onSubmit={this.handleSubmit}>
+            <div id='inputs'>
+              <span className='label'>Protein: <input id='proteinSearch' value={this.state.proteinSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Fats: <input id='fatSearch' value={this.state.fatSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Carbs: <input id='carbSearch' value={this.state.carbSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Sugar: <input id='sugarSearch' value={this.state.sugarSearch} onChange={this.handleChange} /></span>
+            </div>
 
-
-        {this.state.searchedFoods.map((food, id) => (
-          <Food
-            key={id}
-            foods={food}
-            id={id}
-            proteinSearch={this.state.proteinSearch}
-            fatSearch={this.state.fatSearch}
-            carbSearch={this.state.carbSearch}
-            sugarSearch={this.state.sugarSearch} />
-        ))}
+          <div className='btns'>
+            <button id='search' value='submit'>Search</button>
+            <a id='reset' onClick={() => {this.reset()}}>Reset</a>
+          </div>
+          </form>
+        </div>
+        <div id='all-food'>
+          <h2 style={(this.state.searchedFoods.length === 0) ? {display:'none'} : {display: 'block'}}>Results: {this.state.searchedFoods.length}</h2>
+          {this.state.searchedFoods.map((food, id) => (
+            <Food key={id} foods={food} id={id}
+              proteinSearch={this.state.proteinSearch}
+              fatSearch={this.state.fatSearch}
+              carbSearch={this.state.carbSearch}
+              sugarSearch={this.state.sugarSearch}
+            />
+          ))}
+        </div>
       </div>
     );
   }
 }
-
 
 export default App;
