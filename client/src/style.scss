@@ -16,11 +16,13 @@ html {
 body {
   // margin: 1vw;
   height: 100%;
+  // background: whitesmoke;
 }
 
 #header {
   // border: 1px solid darkgrey;
-  height: 8vh;
+  background: rgba(19,86,119,.5);
+  height: 10vh;
   color: $primary;
   display: flex;
   justify-content: center;
@@ -36,7 +38,8 @@ body {
 #search-form {
   border-top: 1px solid darkgrey;
   border-bottom: 1px solid darkgrey;
-  height: 30vh;
+  background: rgba(247,152,83, .5);
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,6 +59,9 @@ body {
     text-align: center;
     width: 90%;
     margin: auto;
+  }
+  #search-text {
+    font-size: .7rem;
   }
 
   form {
@@ -159,15 +165,12 @@ body {
 }
 
 footer {
-  border: 1px solid black;
-  background: #888;
   width: 100%;
   height: 2vh;
-  position: inherit;
+  position: fixed;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  color: darkgrey;
 }
 
 
@@ -183,7 +186,7 @@ footer {
   }
 
   #search-form {
-    height: 28vh;
+    height: 30vh;
     h1 {
       font-size: 2.2rem;
       margin-top: 2vh;
@@ -191,6 +194,10 @@ footer {
     }
     p {
       font-size: 1.1rem;
+    }
+    #search-text {
+      font-size: 1rem;
+      margin-top: .5vh;
     }
     form {
       // border: 1px solid red;
@@ -215,6 +222,10 @@ footer {
         }
         .label {
           font-size: 1.4rem;
+        }
+        #check-box {
+          width: 2vw;
+          align-self: center;
         }
       }
       .btns {
@@ -279,6 +290,7 @@ footer {
       #inputs {
         width: 50vw;
         justify-content: space-around;
+
       }
       .btns {
         #search {

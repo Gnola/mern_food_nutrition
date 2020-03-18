@@ -12,7 +12,8 @@ body {
 }
 
 #header {
-  height: 8vh;
+  background: rgba(19, 86, 119, 0.5);
+  height: 10vh;
   color: #f79853;
   display: flex;
   justify-content: center;
@@ -27,7 +28,8 @@ body {
 #search-form {
   border-top: 1px solid darkgrey;
   border-bottom: 1px solid darkgrey;
-  height: 30vh;
+  background: rgba(247, 152, 83, 0.5);
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,6 +48,9 @@ body {
   text-align: center;
   width: 90%;
   margin: auto;
+}
+#search-form #search-text {
+  font-size: 0.7rem;
 }
 #search-form form {
   margin-bottom: 0.5rem;
@@ -133,15 +138,12 @@ body {
 }
 
 footer {
-  border: 1px solid black;
-  background: #888;
   width: 100%;
   height: 2vh;
-  position: inherit;
+  position: fixed;
   bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
+  color: darkgrey;
 }
 
 @media (min-width: 600px) {
@@ -153,7 +155,7 @@ footer {
   }
 
   #search-form {
-    height: 28vh;
+    height: 30vh;
   }
   #search-form h1 {
     font-size: 2.2rem;
@@ -162,6 +164,10 @@ footer {
   }
   #search-form p {
     font-size: 1.1rem;
+  }
+  #search-form #search-text {
+    font-size: 1rem;
+    margin-top: 0.5vh;
   }
   #search-form form {
     width: 65vw;
@@ -185,6 +191,10 @@ footer {
   }
   #search-form form #inputs .label {
     font-size: 1.4rem;
+  }
+  #search-form form #inputs #check-box {
+    width: 2vw;
+    align-self: center;
   }
   #search-form form .btns {
     margin: 0 auto;
