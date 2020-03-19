@@ -6,10 +6,10 @@ class Food extends Component {
     this.state ={
       name:this.props.foods.name,
       measurement:this.props.foods.measure,
-      protein:this.props.foods.nutrients[1].value, // (this.props.foods.nutrients[1].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[1].value,
-      fats:this.props.foods.nutrients[2].value, // (this.props.foods.nutrients[2].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[2].value,
-      carbs:this.props.foods.nutrients[3].value, // (this.props.foods.nutrients[3].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[3].value,
-      sugar:this.props.foods.nutrients[4].value // (this.props.foods.nutrients[4].value === "--" || 0.00) ? '0.00' : this.props.foods.nutrients[4].value
+      protein:this.props.foods.nutrients[1].value,
+      fats:this.props.foods.nutrients[2].value,
+      carbs:this.props.foods.nutrients[3].value,
+      sugar:this.props.foods.nutrients[4].value
     }
   }
 
@@ -29,3 +29,9 @@ class Food extends Component {
 }
 
 export default Food;
+
+// OG PROPS
+// (this.props.foods.nutrients[1].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[1].value,
+// (this.props.foods.nutrients[2].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[2].value,
+// (this.props.foods.nutrients[3].value === "--" || 0.00) ? 0 : this.props.foods.nutrients[3].value,
+// (this.props.foods.nutrients[4].value === "--" || 0.00) ? '0.00' : this.props.foods.nutrients[4].value

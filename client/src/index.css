@@ -1,40 +1,42 @@
 * {
-  font-family: "Roboto Condensed", sans-serif;
   margin: 0;
 }
 
 html {
   height: 100%;
-}
-
-body {
-  height: 100%;
+  background: whitesmoke;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 #header {
   background: rgba(19, 86, 119, 0.5);
-  height: 10vh;
   color: #f79853;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
+  height: 15vh;
+  font-size: 2rem;
 }
 #header h1 {
   text-shadow: 1px 1px rgba(19, 86, 119, 0.5);
+  text-shadow: 1px 1px white;
   font-family: Open Sans, "HelveticaNeue", "Helvetica Neue", sans-serif;
 }
 
 #search-form {
+  background: rgba(247, 152, 83, 0.6);
   border-top: 1px solid darkgrey;
   border-bottom: 1px solid darkgrey;
-  background: rgba(247, 152, 83, 0.5);
-  height: 40vh;
+  color: #135677;
+  margin: 5vh auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #135677;
+  width: 80vw;
+  height: 40vh;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px 1px;
 }
 #search-form h1 {
   text-align: center;
@@ -43,14 +45,14 @@ body {
   font-size: 1.7rem;
 }
 #search-form p {
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 1vh;
   text-align: center;
   width: 90%;
   margin: auto;
 }
 #search-form #search-text {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 #search-form form {
   margin-bottom: 0.5rem;
@@ -148,26 +150,32 @@ footer {
 
 @media (min-width: 600px) {
   #header {
-    height: 10vh;
+    height: 15vh;
   }
   #header h1 {
-    font-size: 4rem;
+    font-size: 4.5rem;
   }
 
   #search-form {
-    height: 30vh;
+    margin-top: 6%;
+    width: 55vw;
+    height: 45vh;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 1px 1px 1px 1px;
   }
   #search-form h1 {
-    font-size: 2.2rem;
+    font-size: 3rem;
     margin-top: 2vh;
     margin-bottom: 2vh;
   }
   #search-form p {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
   #search-form #search-text {
-    font-size: 1rem;
-    margin-top: 0.5vh;
+    font-size: 1.1rem;
+    margin-top: 1vh;
+    margin-bottom: 0;
   }
   #search-form form {
     width: 65vw;
@@ -205,11 +213,19 @@ footer {
   #search-form form .btns #search, #search-form form .btns #reset {
     text-align: center;
     font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   #search-form form .btns #search {
     width: 10vw;
+    height: 5vh;
   }
 
+  #all-food {
+    width: 95%;
+    margin: auto;
+  }
   #all-food h2 {
     margin: 2vh auto;
     font-size: 2rem;
@@ -238,18 +254,54 @@ footer {
   }
 }
 @media (min-width: 1000px) {
+  #search-form {
+    margin-top: 6%;
+    width: 48vw;
+    height: 55vh;
+    border-radius: 8px;
+    display: flex;
+    box-shadow: 1px 1px 1px 1px;
+  }
+  #search-form h1 {
+    font-size: 4rem;
+    margin-top: 0;
+  }
   #search-form p {
     font-size: 1.5rem;
+    margin: 1vh auto;
+  }
+  #search-form #search-text {
+    margin-bottom: 0;
+  }
+  #search-form form {
+    width: 90%;
+    height: 40%;
+    margin: 1vh auto 0;
   }
   #search-form form #inputs {
-    width: 50vw;
-    justify-content: space-around;
+    margin-top: 2vh;
+    width: 90%;
+  }
+  #search-form form #inputs .label {
+    font-size: 1.6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #search-form form .btns {
+    width: 85%;
+    margin: 0 auto;
   }
   #search-form form .btns #search {
     width: 12vw;
+    height: 7vh;
+    font-size: 1.4rem;
   }
   #search-form form .btns #reset {
     width: 8vw;
+    text-align: center;
+    font-size: 1.4rem;
   }
 
   #all-food h2 {
@@ -274,6 +326,10 @@ footer {
     width: 10vw;
     justify-content: center;
     flex-wrap: nowrap;
+  }
+
+  footer {
+    margin-bottom: 1vh;
   }
 }
 

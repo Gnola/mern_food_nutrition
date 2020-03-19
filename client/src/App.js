@@ -25,7 +25,7 @@ class App extends Component {
       this.setState({
         foods:res[0].report.foods,
       },
-      () => {
+      () => { // change incoming values
         for (var i = 0; i < this.state.foods.length; i++) {
           if (this.state.foods[i].nutrients[1].value === '--' || 0.00) {
             this.state.foods[i].nutrients[1].value = '0.00'
@@ -40,7 +40,7 @@ class App extends Component {
             this.state.foods[i].nutrients[4].value = '0.00'
           }
         }
-        console.log(this.state);
+        // console.log(this.state);
       })
     })
     .catch(err => console.log(err))
@@ -61,13 +61,11 @@ class App extends Component {
 
   // SEARCH //
   search = () => {
-    // clear search arrays
-    this.setState({
+    this.setState({ // clear search arrays
       searched: [],
       searchedFoods: []
     })
-    // loop through foods and find matches depending on checkbox
-    if (!this.state.checked) {
+    if (!this.state.checked) { // loop through foods and find matches depending on checkbox
       for (var i = 0; i < this.state.foods.length; i++) {
         if (this.state.foods[i].nutrients[1].value >= this.state.proteinSearch && this.state.foods[i].nutrients[2].value >= this.state.fatSearch && this.state.foods[i].nutrients[3].value >= this.state.carbSearch && this.state.foods[i].nutrients[4].value >= this.state.sugarSearch) {
           this.state.searched.push(this.state.foods[i])
@@ -80,8 +78,7 @@ class App extends Component {
         }
       }
     }
-    // alert if no results are found
-    if (this.state.searched.length === 0) {
+    if (this.state.searched.length === 0) { // alert if no results are found
       alert('Sorry no results matched your search. Please try again')
       this.setState({
         proteinSearch: 0,
@@ -90,11 +87,10 @@ class App extends Component {
         sugarSearch: 0,
       })
     }
-    // set state of searchedFoods to what was found in for loop
-    this.setState({
+    this.setState({ // set state of searchedFoods to what was found in for loop
       searchedFoods: this.state.searched
     })
-    console.log(this.state);
+    // console.log(this.state);
   }
 
   // RESET //
@@ -107,9 +103,9 @@ class App extends Component {
       carbSearch: 0,
       sugarSearch: 0,
     })
-    console.log(this.state);
   }
 
+  // CHECKBOX //
   check = () => {
     this.setState({
       checked:!this.state.checked
@@ -120,26 +116,23 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div id='header'>
-          <h1>thryve</h1>
-        </div>
+        <div id='header'><h1>thryve</h1></div>
         <div id='search-form'>
           <h1>Search</h1>
-          <p >Search for foods with a combination of the following nutrients by amounts (in grams).</p>
+          <p >Search for foods with a combination of the following nutrients by amounts (in grams)</p>
           <p id='search-text'>Check the box below to find foods with LESS THAN the amounts searched for.</p>
           <form onSubmit={this.handleSubmit}>
             <div id='inputs'>
-              <span className='label'>Protein: <input id='proteinSearch' value={this.state.proteinSearch} onChange={this.handleChange} /></span>
-              <span className='label'>Fats: <input id='fatSearch' value={this.state.fatSearch} onChange={this.handleChange} /></span>
-              <span className='label'>Carbs: <input id='carbSearch' value={this.state.carbSearch} onChange={this.handleChange} /></span>
-              <span className='label'>Sugar: <input id='sugarSearch' value={this.state.sugarSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Protein <input id='proteinSearch' value={this.state.proteinSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Fats <input id='fatSearch' value={this.state.fatSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Carbs <input id='carbSearch' value={this.state.carbSearch} onChange={this.handleChange} /></span>
+              <span className='label'>Sugar <input id='sugarSearch' value={this.state.sugarSearch} onChange={this.handleChange} /></span>
               <input id='check-box' type='checkbox' value={this.state.checked} onChange={this.check}/>
             </div>
-
-          <div className='btns'>
-            <button id='search' value='submit'>Search</button>
-            <a href='#' id='reset' onClick={() => {this.reset()}}>Reset</a>
-          </div>
+            <div className='btns'>
+              <button id='search' value='submit'>Search</button>
+              <a  id='reset' onClick={() => {this.reset()}}>Reset</a>
+            </div>
           </form>
         </div>
         <div id='all-food'>
@@ -153,9 +146,7 @@ class App extends Component {
             />
           ))}
         </div>
-        <footer>
-          Designed by Gianni Nola
-        </footer>
+        <footer>Designed by Gianni Nola</footer>
       </div>
     );
   }
